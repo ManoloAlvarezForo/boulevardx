@@ -10,29 +10,30 @@ export const typeDefs = gql`
     status: String!
   }
 
+  input AppointmentInput {
+    time: String!
+    client: String!
+    jobType: String!
+    date: String!
+    status: String!
+  }
+
+  input UpdateAppointmentInput {
+    time: String
+    client: String
+    jobType: String
+    date: String
+    status: String
+  }
+
   type Query {
     appointments: [Appointment!]!
     appointment(id: ID!): Appointment
   }
 
   type Mutation {
-    createAppointment(
-      time: String!
-      client: String!
-      jobType: String!
-      date: String!
-      status: String!
-    ): Appointment!
-
-    updateAppointment(
-      id: ID!
-      time: String
-      client: String
-      jobType: String
-      date: String
-      status: String
-    ): Appointment!
-
+    createAppointment(input: AppointmentInput!): Appointment!
+    updateAppointment(id: ID!, input: UpdateAppointmentInput!): Appointment!
     deleteAppointment(id: ID!): Boolean!
   }
 `;

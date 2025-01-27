@@ -9,9 +9,9 @@ export const getAppointmentById = async (id: string) => {
 };
 
 export const createAppointment = async (data: {
-  time: string;
-  client: string;
-  jobType: string;
+  appointmentTime: string;
+  customerName: string;
+  service: string;
   date: string;
   status: string;
 }) => {

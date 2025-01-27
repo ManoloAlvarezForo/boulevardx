@@ -12,6 +12,7 @@ export const createAppointment = async (data: {
   appointmentTime: string;
   customerName: string;
   service: string;
+  salon: string;
   date: string;
   status: string;
 }) => {
@@ -21,9 +22,10 @@ export const createAppointment = async (data: {
 export const updateAppointment = async (
   id: string,
   data: {
-    time?: string;
-    client?: string;
-    jobType?: string;
+    appointmentTime?: string;
+    customerName?: string;
+    service?: string;
+    salon?: string;
     date?: string;
     status?: string;
   }

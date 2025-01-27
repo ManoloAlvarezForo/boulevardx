@@ -1,7 +1,7 @@
 "use client";
 
 import { ApolloProvider } from "@apollo/client";
-import client from "../lib/apolloClient"; // Asegúrate de que la ruta sea correcta
+import client from "../lib/apolloClient";
 
 export default function ApolloProviderWrapper({
   children,

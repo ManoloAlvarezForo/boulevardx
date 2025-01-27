@@ -1,7 +1,8 @@
 type AppointmentInput = {
-  time: string;
-  client: string;
-  jobType: string;
+  appointmentTime: string;
+  customerName: string;
+  service: string;
+  salon: string;
   date: string;
   status: string;
 };
@@ -31,28 +32,46 @@ export const resolvers = {
       _: never,
       { input }: { input: AppointmentInput }
     ): Promise<ReturnType<typeof appointmentService.createAppointment>> => {
-      const { time, client, jobType, date, status } = input;
+      const { appointmentTime, customerName, service, salon, date, status } =
+        input;
 
-      if (!time || !client || !jobType || !date || !status) {
+      if (
+        !appointmentTime ||
+        !customerName ||
+        !service ||
+        !salon ||
+        !date ||
+        !status
+      ) {
         throw new Error("All fields must be provided");
       }
 
       return await appointmentService.createAppointment({
-        time,
-        client,
-        jobType,
+        appointmentTime,
+        customerName,
+        service,
+        salon,
         date,
         status,
       });
     },
     updateAppointment: async (
       _: never,
-      { id, time, client, jobType, date, status }: AppointmentUpdateInput
+      {
+        id,
+        appointmentTime,
+        customerName,
+        service,
+        salon,
+        date,
+        status,
+      }: AppointmentUpdateInput
     ): Promise<ReturnType<typeof appointmentService.updateAppointment>> => {
       return await appointmentService.updateAppointment(id, {
-        time,
-        client,
-        jobType,
+        appointmentTime,
+        customerName,
+        service,
+        salon,
         date,
         status,
       });

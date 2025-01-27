@@ -15,9 +15,10 @@ datasource db {
 
 model Appointment {
   id       String   @id @default(cuid())
-  time     String
-  client   String
-  jobType  String
+  appointmentTime     String
+  customerName   String
+  service  String
+  salon  String
   date     String
   status   String
   createdAt DateTime @default(now())

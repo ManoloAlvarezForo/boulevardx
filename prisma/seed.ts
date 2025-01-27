@@ -1,34 +1,138 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 async function main() {
   const appointments = [
-    { time: '10:00 am', client: 'John Doe', jobType: 'Balayage', date: '2025-02-01', status: 'Pending' },
-    { time: '02:00 pm', client: 'Jane Smith', jobType: 'Men\'s Cut', date: '2025-02-02', status: 'Completed' },
-    { time: '09:00 am', client: 'Alice Johnson', jobType: 'Blowout', date: '2025-02-03', status: 'Pending' },
-    { time: '11:00 am', client: 'Bob Brown', jobType: 'Updo', date: '2025-02-04', status: 'Pending' },
-    { time: '03:00 pm', client: 'Charlie Davis', jobType: 'Balayage', date: '2025-02-05', status: 'Completed' },
-    { time: '04:00 pm', client: 'David Clark', jobType: 'Men\'s Cut', date: '2025-02-06', status: 'Pending' },
-    { time: '08:00 am', client: 'Eve White', jobType: 'Hair Color', date: '2025-02-07', status: 'Completed' },
-    { time: '12:00 pm', client: 'Frank Green', jobType: 'Blowout', date: '2025-02-08', status: 'Pending' },
-    { time: '01:00 pm', client: 'Grace Black', jobType: 'Updo', date: '2025-02-09', status: 'Completed' },
-    { time: '10:00 am', client: 'Hank White', jobType: 'Balayage', date: '2025-02-10', status: 'Pending' },
-    { time: '02:00 pm', client: 'Ivy Red', jobType: 'Men\'s Cut', date: '2025-02-11', status: 'Completed' },
-    { time: '03:00 pm', client: 'Jack Blue', jobType: 'Blowout', date: '2025-02-12', status: 'Pending' },
-    { time: '06:00 pm', client: 'Kathy Gray', jobType: 'Hair Color', date: '2025-02-13', status: 'Completed' },
-    { time: '07:00 pm', client: 'Leo Yellow', jobType: 'Updo', date: '2025-02-14', status: 'Pending' },
-    { time: '05:00 pm', client: 'Mia Silver', jobType: 'Balayage', date: '2025-02-15', status: 'Completed' }
+    {
+      appointmentTime: "10:00 am",
+      customerName: "John Doe",
+      service: "Balayage",
+      salon: "Salon A",
+      date: "2025-01-01",
+      status: "Pending",
+    },
+    {
+      appointmentTime: "02:00 pm",
+      customerName: "Jane Smith",
+      service: "Men's Cut",
+      salon: "Salon B",
+      date: "2025-01-02",
+      status: "Completed",
+    },
+    {
+      appointmentTime: "09:00 am",
+      customerName: "Alice Johnson",
+      service: "Blowout",
+      salon: "Salon A",
+      date: "2025-01-03",
+      status: "Pending",
+    },
+    {
+      appointmentTime: "11:00 am",
+      customerName: "Bob Brown",
+      service: "Updo",
+      salon: "Salon C",
+      date: "2025-01-04",
+      status: "Pending",
+    },
+    {
+      appointmentTime: "03:00 pm",
+      customerName: "Charlie Davis",
+      service: "Balayage",
+      salon: "Salon B",
+      date: "2025-01-05",
+      status: "Completed",
+    },
+    {
+      appointmentTime: "04:00 pm",
+      customerName: "David Clark",
+      service: "Men's Cut",
+      salon: "Salon A",
+      date: "2025-01-06",
+      status: "Pending",
+    },
+    {
+      appointmentTime: "08:00 am",
+      customerName: "Eve White",
+      service: "Hair Color",
+      salon: "Salon C",
+      date: "2025-01-07",
+      status: "Completed",
+    },
+    {
+      appointmentTime: "12:00 pm",
+      customerName: "Frank Green",
+      service: "Blowout",
+      salon: "Salon B",
+      date: "2025-01-08",
+      status: "Pending",
+    },
+    {
+      appointmentTime: "01:00 pm",
+      customerName: "Grace Black",
+      service: "Updo",
+      salon: "Salon A",
+      date: "2025-01-09",
+      status: "Completed",
+    },
+    {
+      appointmentTime: "10:00 am",
+      customerName: "Hank White",
+      service: "Balayage",
+      salon: "Salon C",
+      date: "2025-01-10",
+      status: "Pending",
+    },
+    {
+      appointmentTime: "02:00 pm",
+      customerName: "Ivy Red",
+      service: "Men's Cut",
+      salon: "Salon B",
+      date: "2025-01-11",
+      status: "Completed",
+    },
+    {
+      appointmentTime: "03:00 pm",
+      customerName: "Jack Blue",
+      service: "Blowout",
+      salon: "Salon A",
+      date: "2025-01-12",
+      status: "Pending",
+    },
+    {
+      appointmentTime: "06:00 pm",
+      customerName: "Kathy Gray",
+      service: "Hair Color",
+      salon: "Salon C",
+      date: "2025-01-13",
+      status: "Completed",
+    },
+    {
+      appointmentTime: "07:00 pm",
+      customerName: "Leo Yellow",
+      service: "Updo",
+      salon: "Salon B",
+      date: "2025-01-14",
+      status: "Pending",
+    },
+    {
+      appointmentTime: "05:00 pm",
+      customerName: "Mia Silver",
+      service: "Balayage",
+      salon: "Salon A",
+      date: "2025-01-15",
+      status: "Completed",
+    },
   ];
 
-  // Insertar las citas en la base de datos
   for (const appointment of appointments) {
     await prisma.appointment.create({
       data: appointment,
     });
   }
 
-  console.log('Appointments created successfully!');
+  console.log("Appointments created successfully!");
 }
 
 main()

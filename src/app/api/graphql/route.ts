@@ -13,34 +13,36 @@ const server = new ApolloServer({
 let url: string | undefined;
 let isServerStarted = false;
 
-// Start Apollo Server only once
+// Function to start Apollo Server (called once when the API route is accessed)
 const startApolloServer = async () => {
-    if (isServerStarted) {
-      return;
-    }
-  
-    try {
-      console.log('Starting Apollo Server...');
-      const { url: serverUrl } = await startStandaloneServer(server, {
-        context: async ({ req }) => {
-          return { headers: req.headers };
-        },
-      });
-  
-      url = serverUrl;
-      isServerStarted = true; // mark the server when is ready
-      console.log(`Apollo Server started at ${url}!`);
-    } catch (error) {
-      console.error("Error starting Apollo Server:", error);
-      throw new Error("Failed to start Apollo Server");
-    }
-  };
+  if (isServerStarted) {
+    return;
+  }
 
-// Call the function to start the Apollo Server
-await startApolloServer();
+  try {
+    console.log("Starting Apollo Server...");
+    const { url: serverUrl } = await startStandaloneServer(server, {
+      context: async ({ req }) => {
+        return { headers: req.headers };
+      },
+    });
+
+    url = serverUrl;
+    isServerStarted = true; // mark the server when it's ready
+    console.log(`Apollo Server started at ${url}!`);
+  } catch (error) {
+    console.error("Error starting Apollo Server:", error);
+    throw new Error("Failed to start Apollo Server");
+  }
+};
 
 // Handler for POST requests
 export const POST = async (req: Request) => {
+  // Ensure Apollo Server is started before handling the request
+  if (!isServerStarted) {
+    await startApolloServer(); // Ensure the server is initialized before processing the request
+  }
+
   if (!url) {
     return new Response("Server not initialized yet", { status: 500 });
   }

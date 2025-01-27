@@ -1,15 +1,6 @@
 import React from "react";
 import moment from "moment";
-
-interface Appointment {
-  id: string;
-  client: string;
-  jobType: string;
-  date: string;
-  time: string;
-  status: string;
-}
-
+import { Appointment } from "../api/graphql/types";
 interface CalendarProps {
   appointments: Appointment[];
 }
@@ -58,10 +49,13 @@ const Calendar: React.FC<CalendarProps> = ({ appointments }) => {
                         className="bg-white rounded-lg shadow p-3 text-gray-800"
                       >
                         <p className="text-sm font-semibold text-gray-900">
-                          {appointment.client}
+                          {appointment.customerName}
                         </p>
                         <p className="text-xs text-gray-500">
-                          {appointment.time} - {appointment.jobType}
+                          {appointment.service}
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          {appointment.appointmentTime} - {appointment.service}
                         </p>
                       </div>
                     ))}

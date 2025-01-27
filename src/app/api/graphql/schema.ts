@@ -3,25 +3,28 @@ import { gql } from "graphql-tag";
 export const typeDefs = gql`
   type Appointment {
     id: ID!
-    time: String!
-    client: String!
-    jobType: String!
+    appointmentTime: String!
+    customerName: String!
+    service: String!
+    salon: String!
     date: String!
     status: String!
   }
 
   input AppointmentInput {
-    time: String!
-    client: String!
-    jobType: String!
+    appointmentTime: String!
+    customerName: String!
+    service: String!
+    salon: String!
     date: String!
     status: String!
   }
 
   input UpdateAppointmentInput {
-    time: String
-    client: String
-    jobType: String
+    appointmentTime: String
+    customerName: String
+    service: String!
+    salon: String!
     date: String
     status: String
   }

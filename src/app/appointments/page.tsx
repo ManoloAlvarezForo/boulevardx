@@ -7,10 +7,11 @@ const GET_APPOINTMENTS = gql`
   query GetAppointments {
     appointments {
       id
-      client
-      jobType
+      customerName
+      service
       date
-      time
+      appointmentTime
+      salon
       status
     }
   }

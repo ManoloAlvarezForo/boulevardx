@@ -3,6 +3,7 @@ export interface Appointment {
   appointmentTime: string;
   customerName: string;
   service: string;
+  salon: string;
   date: string;
   status: string;
 }
@@ -22,6 +23,7 @@ export interface MutationResolvers {
       appointmentTime: string;
       customerName: string;
       service: string;
+      salon: string;
       date: string;
       status: string;
     }
@@ -33,6 +35,7 @@ export interface MutationResolvers {
       appointmentTime?: string;
       customerName?: string;
       service?: string;
+      salon: string;
       date?: string;
       status?: string;
     }

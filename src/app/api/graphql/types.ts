@@ -1,8 +1,8 @@
 export interface Appointment {
   id: string;
-  time: string;
-  client: string;
-  jobType: string;
+  appointmentTime: string;
+  customerName: string;
+  service: string;
   date: string;
   status: string;
 }
@@ -19,9 +19,9 @@ export interface MutationResolvers {
   createAppointment: (
     parent: unknown,
     args: {
-      time: string;
-      client: string;
-      jobType: string;
+      appointmentTime: string;
+      customerName: string;
+      service: string;
       date: string;
       status: string;
     }
@@ -30,9 +30,9 @@ export interface MutationResolvers {
     parent: unknown,
     args: {
       id: string;
-      time?: string;
-      client?: string;
-      jobType?: string;
+      appointmentTime?: string;
+      customerName?: string;
+      service?: string;
       date?: string;
       status?: string;
     }
